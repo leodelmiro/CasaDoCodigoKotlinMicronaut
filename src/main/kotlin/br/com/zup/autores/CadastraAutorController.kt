@@ -12,6 +12,10 @@ class CadastraAutorController {
 
     @Post
     fun cadastra(@Body @Valid request: NovoAutorRequest) {
-        println(request)
+        println("Requisição => $request")
+
+        val autor = request.paraAutor()
+
+        println("Autor => ${autor.nome}")
     }
 }
