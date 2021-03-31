@@ -10,6 +10,7 @@ import javax.transaction.Transactional
 class BuscaAutoresController(private val autorRepository: AutorRepository) {
 
     @Get
+    @Transactional
     fun lista(@QueryValue(defaultValue = "") email:String): HttpResponse<Any> {
         if(email.isBlank()) {
         val autores = autorRepository.findAll()

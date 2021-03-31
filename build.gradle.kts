@@ -46,6 +46,10 @@ dependencies {
 
 }
 
+allOpen {
+    annotation("io.micronaut.http.annotation.Controller")
+}
+
 
 application {
     mainClass.set("br.com.zup.ApplicationKt")
