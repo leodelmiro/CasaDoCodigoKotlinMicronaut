@@ -19,4 +19,5 @@ class Autor(
 
     @Column(updatable = false)
     val criadoEm: LocalDateTime = LocalDateTime.now()
+
 }
