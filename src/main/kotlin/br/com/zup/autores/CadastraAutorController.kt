@@ -11,14 +11,15 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/autores")
-class CadastraAutorController(val autorRepository: AutorRepository){
+class CadastraAutorController(val autorRepository: AutorRepository, val enderecoClient: EnderecoClient){
 
     @Post
     @Transactional
     fun cadastra(@Body @Valid request: NovoAutorRequest): HttpResponse<Any> {
         println("Requisição => $request")
+        val enderecoResponse = enderecoClient.consulta(request.cep)
 
-        val autor = request.paraAutor()
+        val autor = request.paraAutor(enderecoResponse.body()!!)
 
         println("Autor => ${autor.nome}")
         autorRepository.save(autor)
